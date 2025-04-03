@@ -6,8 +6,10 @@ const UserContext = createContext();
 
 // Sent to tree top: main.jsx
 // UserContextProvider is a wrapper component that provides the user data to any child component.
-// The children prop allows any component wrapped inside UserContextProvider to receive the provided data.
 export const UserContextProvider = ({ children }) => {
+    // The children prop allows any component wrapped inside UserContextProvider to receive the provided data.
+
+
     const [userData, setUserData] = useState([
         {
             name: "Ben Grim",
