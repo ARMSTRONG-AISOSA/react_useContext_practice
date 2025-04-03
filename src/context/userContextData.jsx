@@ -1,14 +1,13 @@
-import { Children } from "react";
 import { createContext, useState, useContext } from "react";
 
+// a global data store that holds user-related information that other components will be able to subscribe to  and access its values.
 const UserContext = createContext();
 
 
-export const useUserContext = () => {
-    return useContext(UserContext);
-}
-
-export const UserContextProvider = ({children}) => {
+// Sent to tree top: main.jsx
+// UserContextProvider is a wrapper component that provides the user data to any child component.
+// The children prop allows any component wrapped inside UserContextProvider to receive the provided data.
+export const UserContextProvider = ({ children }) => {
     const [userData, setUserData] = useState([
         {
             name: "Ben Grim",
@@ -32,7 +31,10 @@ export const UserContextProvider = ({children}) => {
 }
 
 
-// Notes
-// createContext: Creates a new context object, allowing data to be shared across multiple components.
-// useState: Manages the userData state inside the provider.
-// useContext: Allows consuming components to access the context.
+// Custom components sent to components
+export const useUserContext = () => {
+    // useContext: Allows consuming components to access the context.
+    return useContext(UserContext);
+}
+
+
